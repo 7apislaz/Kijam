@@ -1,20 +1,32 @@
-class Kid {
-  final int key;
+class Infant {
+  final String inf_key;
+  final String tag;
   final String name;
-  final int age;
+  final String gender;
+  final String age;
+  final String group;
+  final String picture;
+  final String update_datetime;
+  final String is_active;
 
-  Kid({required this.key, required this.name, required this.age});
+  Infant({required this.inf_key, required this.tag, required this.name, required this.gender, required this.age, required this.group, required this.picture, required this.update_datetime, required this.is_active});
 
   Map<String, dynamic> toMap() {
     return {
-      'key': key,
+      'inf_key': inf_key,
+      'tag': tag,
       'name': name,
+      'gender': gender,
       'age': age,
+      'group': group,
+      'picture': picture,
+      'update_datetime': update_datetime,
+      'is_active': is_active,
     };
   }
 
   @override
   String toString() {
-    return 'Kid{key: $key, name: $name, age: $age}';
+    return 'Infant{inf_key: $inf_key, tag: $tag, name: $name, gender: $gender, age: $age, group: $group, picture: $picture, update_datetime: $update_datetime, is_active: $is_active}';
   }
 }
