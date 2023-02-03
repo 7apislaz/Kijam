@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kijam_vision21tech/constants.dart';
 import 'package:kijam_vision21tech/db/dbHelper.dart';
+import 'package:kijam_vision21tech/model/emotion_data.dart';
 import 'package:kijam_vision21tech/model/kid.dart';
+import 'package:kijam_vision21tech/model/measured_data.dart';
 import 'package:kijam_vision21tech/module/button.dart';
 import 'package:kijam_vision21tech/module/audio.dart';
+import '../model/kindergartens.dart';
 import 'kijam_setting_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -68,35 +71,60 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Kiosk_Button(
-                        text: '키 재기',
-                        textScale: 5,
-                        maxiSize: Size(500, 160),
-                        miniSize: Size(500, 160),
+                        text: '아이생성',
+                        textScale: 2,
+                        maxiSize: Size(200, 100),
+                        miniSize: Size(200, 100),
                         buttonColor: kOrangeButtonColor,
                         textStyle: Theme.of(context).textTheme.bodyText1,
                         onPressed: () {
-                          buttonAudios.playAudio('assets/audios/button_effect.mp3');
-                          //Get.to(() => KidListScreen());
+                          //buttonAudios.playAudio('assets/audios/button_effect.mp3');
+                          //Get.to(() => EmotionKidListScreen());
                           DBHelper dbHelper = DBHelper();
-                          dbHelper.insertKid(Kid(key: 1, name: 'asd', age: 6));
+                          dbHelper.insertKid(Kid(inf_key: 's', tag: 's', name: 'd', gender: 'male', age: 'b', classroom: 'n', picture: 'v', update_datetime: 'as', is_active: 'True'));
                         }),
-                    SizedBox(height: 70),
+                    SizedBox(height: 30),
                     Kiosk_Button(
-                      text: '감정 수집',
-                      textScale: 5,
-                      maxiSize: Size(500, 160),
-                      miniSize: Size(500, 160),
+                      text: '반생성',
+                      textScale: 2,
+                      maxiSize: Size(200, 100),
+                      miniSize: Size(200, 100),
                       buttonColor: kOrangeButtonColor,
                       textStyle: Theme.of(context).textTheme.bodyText1,
                       onPressed: () {
-                        buttonAudios.playAudio('assets/audios/button_effect.mp3');
+                        //buttonAudios.playAudio('assets/audios/button_effect.mp3');
                         //Get.to(() => EmotionKidListScreen());
                         DBHelper dbHelper = DBHelper();
-                        dbHelper.getAllKid().then((value) => value.forEach((element) {
-                          print(element.name);
-                        }));
-                      },
-                    ),
+                        dbHelper.insertKindergartens(Kindergartens(key: '2', updated_datetime: '2021-01-01', name: 'asd'));
+                        }),
+                    SizedBox(height: 30),
+                    Kiosk_Button(
+                        text: '감생',
+                        textScale: 2,
+                        maxiSize: Size(200, 100),
+                        miniSize: Size(200, 100),
+                        buttonColor: kOrangeButtonColor,
+                        textStyle: Theme.of(context).textTheme.bodyText1,
+                        onPressed: () {
+                          //buttonAudios.playAudio('assets/audios/button_effect.mp3');
+                          //Get.to(() => EmotionKidListScreen());
+                          DBHelper dbHelper = DBHelper();
+                          dbHelper.insertEmotionData(EmotionData(id: 's', selected_play: 'd', measured_datetime: 'q', emotion: 'e', inf_key: 'w'));
+                        }),
+                    SizedBox(height: 30),
+                    Kiosk_Button(
+                        text: '측생',
+                        textScale: 2,
+                        maxiSize: Size(200, 100),
+                        miniSize: Size(200, 100),
+                        buttonColor: kOrangeButtonColor,
+                        textStyle: Theme.of(context).textTheme.bodyText1,
+                        onPressed: () {
+                          //buttonAudios.playAudio('assets/audios/button_effect.mp3');
+                          //Get.to(() => EmotionKidListScreen());
+                          DBHelper dbHelper = DBHelper();
+                          dbHelper.insertMeasuredData(MeasuredData(height: 's', weight: 'w', measured_datetime: 'e', inf_key: 'r'));
+                        }),
                   ],
                 ),
               ),
