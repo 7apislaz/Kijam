@@ -19,7 +19,8 @@ class DBHelper {
   static void _createDb(Database db) async{
     await db.execute(
       "CREATE TABLE kindergartens("
-          "key INTEGER PRIMARY KEY AUTOINCREMENT, "
+          "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+          "key TEXT, "
           "name TEXT, "
           "updated_datetime TEXT)",
     );
@@ -34,7 +35,7 @@ class DBHelper {
           "kindergarten TEXT REFERENCES Kindergarten(key) ,"
           "classroom TEXT, "
           "picture TEXT,"
-          "update_datetime NUMERIC, "
+          "update_datetime TEXT, "
           "is_active TEXT CHECK(name IN('True', 'False')))",
     );
     await db.execute(
@@ -42,7 +43,7 @@ class DBHelper {
           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
           "height TEXT,"
           "weight TEXT,"
-          "measured_datetime NUMERIC,"
+          "measured_datetime TEXT,"
           "inf_key TEXT REFERENCES kid(inf_key))",
     );
     await db.execute(
@@ -50,7 +51,7 @@ class DBHelper {
           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
           "selected_play TEXT, "
           "emotion TEXT, "
-          "measured_datetime NUMERIC, "
+          "measured_datetime TEXT, "
           "inf_key TEXT REFERENCES kid(inf_key))",
     );
     await db.execute(
@@ -58,7 +59,7 @@ class DBHelper {
           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
           "attendance_type TEXT ,"
           "emotion TEXT,"
-          "measured_datetime NUMERIC,"
+          "measured_datetime TEXT,"
           "inf_key TEXT REFERENCES kid(inf_key))",
     );
   }
