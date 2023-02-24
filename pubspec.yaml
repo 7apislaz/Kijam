@@ -44,7 +44,6 @@ dependencies:
   just_audio: ^0.9.30
   path: ^1.8.2
   sqflite: ^2.2.3
-  uuid: ^3.0.7
   short_uuids: ^2.0.0
 
 
