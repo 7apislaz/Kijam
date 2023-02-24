@@ -133,8 +133,8 @@ class DBHelper {
     final db = await database;
 
     final List<Map<String, dynamic>> maps = (await db.query(
-      'Kid',
-      where: 'kid = ?',
+      "Kid",
+      where: "inf_key = ?",
       whereArgs: [inf_key],
     ));
 
@@ -144,7 +144,7 @@ class DBHelper {
   Future<List<Kindergartens>> getAllKindergartens() async {
     final db = await database;
 
-    final List<Map<String, dynamic>> maps = await db.query('Kid');
+    final List<Map<String, dynamic>> maps = await db.query('kindergartens');
     return List.generate(maps.length, (i) {
       return Kindergartens(
         key: maps[i]['key'],
