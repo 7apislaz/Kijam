@@ -99,19 +99,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           //buttonAudios.playAudio('assets/audios/button_effect.mp3');
                           //Get.to(() => EmotionKidListScreen());
                           DBHelper dbHelper = DBHelper();
-                          dbHelper.insertKid(Kid(inf_key: uuid.generate(), tag: 's', name: 'd', gender: 'male', age: 'b', classroom: 'n', picture: 'v', update_datetime: '${DateTime.now()}', is_active: 'True'));
+                          dbHelper.insertKid(Kid(
+                              inf_key: uuid.generate(),
+                              tag: 's',
+                              name: 'd',
+                              gender: 'male',
+                              age: '10',
+                              classroom: 'n',
+                              picture: 'v',
+                              update_datetime: '${DateTime.now()}',
+                              is_active: 'True'));
                         }),
                     SizedBox(height: 30),
                     Kiosk_Button(
-                      text: '반생성',
-                      textScale: 2,
-                      maxiSize: Size(200, 100),
-                      miniSize: Size(200, 100),
-                      buttonColor: kOrangeButtonColor,
-                      textStyle: Theme.of(context).textTheme.bodyText1,
-                      onPressed: () {
-                        //buttonAudios.playAudio('assets/audios/button_effect.mp3');
-                        _CreateKindergartens();
+                        text: '반생성',
+                        textScale: 2,
+                        maxiSize: Size(200, 100),
+                        miniSize: Size(200, 100),
+                        buttonColor: kOrangeButtonColor,
+                        textStyle: Theme.of(context).textTheme.bodyText1,
+                        onPressed: () {
+                          //buttonAudios.playAudio('assets/audios/button_effect.mp3');
+                          _CreateKindergartens();
                         }),
                     SizedBox(height: 30),
                     Kiosk_Button(
@@ -128,7 +137,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           print(uuid.generate().runtimeType);
                           print('${DateTime.now()}');
                           DBHelper dbHelper = DBHelper();
-                          dbHelper.insertEmotionData(EmotionData(selected_play: 'd', measured_datetime: '${DateTime.now()}', emotion: 'e', inf_key: uuid.generate()));
+                          dbHelper.insertEmotionData(EmotionData(
+                              selected_play: 'd',
+                              measured_datetime: '${DateTime.now()}',
+                              emotion: 'e',
+                              inf_key: uuid.generate()));
                         }),
                     SizedBox(height: 30),
                     Kiosk_Button(
@@ -143,7 +156,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           //Get.to(() => EmotionKidListScreen());
                           print(DateTime.now());
                           DBHelper dbHelper = DBHelper();
-                          dbHelper.insertMeasuredData(MeasuredData(height: 's', weight: 'w', measured_datetime: '${DateTime.now()}', inf_key: uuid.generate()));
+                          dbHelper.insertMeasuredData(MeasuredData(
+                              height: 's',
+                              weight: 'w',
+                              measured_datetime: '${DateTime.now()}',
+                              inf_key: uuid.generate()));
                         }),
                   ],
                 ),
@@ -154,6 +171,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
+
   void _CreateKindergartens() {
     showDialog(
       context: context,
@@ -161,13 +179,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
           titlePadding:
-          EdgeInsets.only(top: 30, bottom: 30, right: 30, left: 30),
+              EdgeInsets.only(top: 30, bottom: 30, right: 30, left: 30),
           contentPadding: EdgeInsets.only(right: 30, left: 30),
           actionsPadding:
-          EdgeInsets.only(top: 30, bottom: 30, right: 30, left: 30),
+              EdgeInsets.only(top: 30, bottom: 30, right: 30, left: 30),
           title: Text("반 생성",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -183,16 +201,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: [
               InkWell(
                 child: SizedBox(
-                    height: 60,
-                    child: Text(
-                      "새로 생성할 반 이름을 입력해주세요.",
-                      style: TextStyle(
-                        fontFamily: 'Godo',
-                        fontWeight: FontWeight.normal,
-                        fontSize: 20,
-                        color: kDarkFontColor,
-                      ),
+                  height: 60,
+                  child: Text(
+                    "새로 생성할 반 이름을 입력해주세요.",
+                    style: TextStyle(
+                      fontFamily: 'Godo',
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                      color: kDarkFontColor,
                     ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -228,7 +246,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           borderSide:
-                          BorderSide(width: 1.5, color: kDarkFontColor)),
+                              BorderSide(width: 1.5, color: kDarkFontColor)),
                     ),
                   ),
                 ),
@@ -251,11 +269,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: new Text("생성"),
               onPressed: () {
                 DBHelper dbHelper = DBHelper();
-                dbHelper.insertKindergartens(
-                    Kindergartens(
-                        key: uuid.generate(),
-                        updated_datetime: '${DateTime.now()}',
-                        name: _KindergartenName));
+                dbHelper.insertKindergartens(Kindergartens(
+                    key: uuid.generate(),
+                    updated_datetime: '${DateTime.now()}',
+                    name: _KindergartenName));
               },
             ),
             ElevatedButton(
