@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kijam_vision21tech/screens/kindergartens_list_screen.dart';
 import 'package:kijam_vision21tech/screens/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'package:short_uuids/short_uuids.dart';
@@ -142,7 +143,7 @@ class _KijamSettingScreenState extends State<KijamSettingScreen> {
                         SizedBox(height: 10),
                         InkWell(
                           onTap: () {
-                            _query();
+                            Get.to(() => KindergartensListScreen());
                           },
                           child: Container(
                             padding: EdgeInsets.only(left: 20),
@@ -491,7 +492,7 @@ class _KijamSettingScreenState extends State<KijamSettingScreen> {
   void _query() async {
     DBHelper dbHelper = DBHelper();
     var list = await dbHelper.getAllKindergartens();
-    print(list);
+    print(list[0].name);
 
     for(var item in list) {
       print(item.name);
